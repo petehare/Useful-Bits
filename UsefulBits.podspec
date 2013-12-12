@@ -22,7 +22,7 @@ Pod::Spec.new do |s|
 
   # Specify the location from where the source should be retrieved.
   #
-  s.source       = { :git => "https://github.com/kevinoneill/Useful-Bits.git", :tag => "1.0" }
+  s.source       = { :git => "https://github.com/petehare/Useful-Bits.git", :tag => "1.0" }
 
   # If this Pod runs only on iOS or OS X, then specify the platform and
   # the deployment target.
