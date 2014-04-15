@@ -154,12 +154,25 @@
 
 - (NSArray *)map:(id (^)(id item))block filterNil:(BOOL)filter_nil;
 {
+  return [self mapWithIndex:^id(id item, NSUInteger index) {
+    return block(item);
+  } filterNil:filter_nil];
+}
+
+- (NSArray *)mapWithIndex:(id (^)(id item, NSUInteger index))block;
+{
+  return [self mapWithIndex:block filterNil:YES];
+}
+
+- (NSArray *)mapWithIndex:(id (^)(id item, NSUInteger index))block filterNil:(BOOL)filter_nil;
+{
   NSMutableArray *result = [NSMutableArray arrayWithCapacity:[self count]];
-  
-  for (id obj in self)
+
+  for (NSUInteger idx = 0; idx < [self count]; idx++)
   {
-    id instance = block(obj);
-    
+    id obj = [self objectAtIndex:idx];
+    id instance = block(obj, idx);
+
     if (nil != instance)
     {
       [result addObject:instance];
@@ -169,7 +182,7 @@
       [result addObject:[NSNull null]];
     }
   }
-  
+
   return [NSArray arrayWithArray:result];
 }
 

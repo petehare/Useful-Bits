@@ -45,6 +45,8 @@
 
 - (NSArray *)map:(id (^)(id item))block;
 - (NSArray *)map:(id (^)(id item))block filterNil:(BOOL)filter_nil;
+- (NSArray *)mapWithIndex:(id (^)(id item, NSUInteger index))block;
+- (NSArray *)mapWithIndex:(id (^)(id item, NSUInteger index))block filterNil:(BOOL)filter_nil;
 - (id)reduce:(id (^)(id current, id item))block initial:(id)initial;
 - (NSArray *)intersperse:(id (^) (id current, id next))separator;
 
